@@ -14,9 +14,17 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/', function(req, res) {
-    res.send("Olá Wallysson!");
+    res.render('index.ejs', {});
+})
+
+app.get('/usuarios', function(req, res) {
+    res.render('usuarios.ejs', {usuarios: [
+        {nome: 'Wallysson', idade: 25},
+        {nome: 'José', idade: 45}
+    ] });
 })
 
 app.listen(3000, function() {
     console.log("Conexão inicializada.");
 })
+
