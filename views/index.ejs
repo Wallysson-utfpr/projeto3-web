@@ -1,7 +1,7 @@
 <%-include('cabecalho.ejs')%>
 <form method="post">
-  <input type="text" name="txtPesquisa" placeholder="Digite o usuario.." />
-  <input type="submit" value="Pesquisar" />
+  <input type="text" name="txtPesquisa" placeholder="Moeda desejada..." />
+  <input type="submit" value="Pesquisar" class="btn btn-dark" />
 </form>
 <br />
 
@@ -11,6 +11,7 @@
     <th>Nome</th>
     <th>Idade</th>
     <th>Editar</th>
+    <th>Deletar</th>
   </tr>
 
   <% for(usuario of Usuarios) { %>
@@ -19,10 +20,10 @@
     <td><%=usuario.nome%></td>
     <td><%=usuario.idade%></td>
     <td>
-      <a href="/del/<%=usuario._id%>">Deletar</a>
+      <a class="btn btn-primary" href="/edit/<%=usuario._id%>">Editar</a>
     </td>
     <td>
-      <a href="/edit/<%=usuario._id%>">Editar</a>
+      <a class="btn btn-danger" href="/del/<%=usuario._id%>">Deletar</a>
     </td>
   </tr>
   <% } %>
