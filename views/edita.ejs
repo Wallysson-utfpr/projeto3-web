@@ -1,10 +1,10 @@
 <%-include('adiciona.ejs')%>
 
-    <form method="POST">
-      Id: <input type="text" name="txtId" readonly value="<%=Usuario._id%> ">
-      Nome: <input type="text" name="txtNome" placeholder="Nome" value="<%=Usuario.nome%>"/>
-      Idade: <input type="text" name="txtIdade" placeholder="Idade" value="<%=Usuario.idade%>"> <br> <br>
-      <input type="submit" name="Editar" value="Editar" class="btn btn-secondary" />
-    </form>
-<%-include('rodape.ejs')%>
-
+  <form method="POST">
+    Id: <input type="text" name="txtId" readonly value="<%=Usuario._id%> ">
+    Nome: <input type="text" name="txtNome" placeholder="Nome" value="<%=Usuario.nome%>" />
+    Alta: <input type="text" name="txtAlta" placeholder="Alta" value="<%=Usuario.alta%>"> <br> <br>
+    Baixa: <input type="text" name="txtBaixa" placeholder="Baixa" value="<%=Usuario.baixa%>"> <br> <br>-->
+    <input type="submit" name="Editar" value="Editar" class="btn btn-secondary" />
+  </form>
+  <%-include('rodape.ejs')%>

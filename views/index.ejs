@@ -1,31 +1,41 @@
 <%-include('cabecalho.ejs')%>
-<form method="post">
-  <input type="text" name="txtPesquisa" class="txtCor" placeholder="Moeda desejada..." />
-  <input type="submit" value="Pesquisar" class="btn btn-dark" />
-</form>
-<br />
+  <form method="post">
+    <input type="text" name="txtPesquisa" class="txtCor" placeholder="Moeda desejada..." />
+    <input type="submit" value="Pesquisar" class="btn btn-dark" />
+  </form>
+  <br />
 
-<table>
-  <tr class="core">
-    <th>ID</th>
-    <th>Nome</th>
-    <th>Idade</th>
-    <th>Editar</th>
-    <th>Deletar</th>
-  </tr>
+  <table>
+    <tr class="core">
+      <th>ID</th>
+      <th>Moeda</th>
+      <th>Alta</th>
+      <th>Baixa</th>
+      <th>Editar</th>
+      <th>Deletar</th>
+    </tr>
 
-  <% for(usuario of Usuarios) { %>
-  <tr>
-    <td><%=usuario._id%></td>
-    <td><%=usuario.nome%></td>
-    <td><%=usuario.idade%></td>
-    <td>
-      <a class="btn btn-primary" href="/edit/<%=usuario._id%>">Editar</a>
-    </td>
-    <td>
-      <a class="btn btn-danger" href="/del/<%=usuario._id%>">Deletar</a>
-    </td>
-  </tr>
-  <% } %>
-</table>
-<%-include('rodape.ejs')%>
+    <% for(usuario of Usuarios) { %>
+      <tr>
+        <td>
+          <%=usuario._id%>
+        </td>
+        <td>
+          <%=usuario.nome%>
+        </td>
+        <td>
+          <%=usuario.alta%>
+        </td>
+        <td>
+          <%=usuario.baixa%>
+        </td>
+        <td>
+          <a class="btn btn-primary" href="/edit/<%=usuario._id%>">Editar</a>
+        </td>
+        <td>
+          <a class="btn btn-danger" href="/del/<%=usuario._id%>">Deletar</a>
+        </td>
+      </tr>
+      <% } %>
+  </table>
+  <%-include('rodape.ejs')%>

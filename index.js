@@ -8,36 +8,37 @@ var Usuario = require('./model/usuario');
 app.use(cookieParser());
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/', function(req, res) {
-    Usuario.find({}).exec(function(err, docs) {
-    res.render('index.ejs', {Usuarios: docs});
+app.get('/', function (req, res) {
+    Usuario.find({}).exec(function (err, docs) {
+        res.render('index.ejs', { Usuarios: docs });
     })
 
 })
 
-app.post('/', function(req, res) {
-    Usuario.find({nome: new RegExp(req.body.txtPesquisa,'gi')}).exec(function(err, docs) {
-    res.render('index.ejs', {Usuarios: docs});
+app.post('/', function (req, res) {
+    Usuario.find({ nome: new RegExp(req.body.txtPesquisa, 'gi') }).exec(function (err, docs) {
+        res.render('index.ejs', { Usuarios: docs });
     })
 })
 
-app.get('/add', function(req, res) {
+app.get('/add', function (req, res) {
     res.render('adiciona.ejs');
 })
 
-app.post('/add', function(req, res) {
-    var usuario = new Usuario ({
+app.post('/add', function (req, res) {
+    var usuario = new Usuario({
         nome: req.body.txtNome,
-        idade: req.body.txtIdade
+        alta: req.body.txtAlta,
+        baixa: req.body.txtBaixa
     })
-    usuario.save(function(err) {
-        if(err) {
+    usuario.save(function (err) {
+        if (err) {
             console.log(err);
         } else {
             res.redirect('/');
@@ -45,41 +46,42 @@ app.post('/add', function(req, res) {
     })
 })
 
-app.get('/del/:id', function(req,res) {
-    Usuario.findByIdAndDelete(req.params.id, function(err){
-    if(err) {
-        console.log(err);
-    } else {
-        res.redirect('/');
-    }
-
-    })
-})
-
-app.get('/edit/:id', function(req,res) {
-    Usuario.findById(req.params.id, function(err, docs) {
-        if(err) {
+app.get('/del/:id', function (req, res) {
+    Usuario.findByIdAndDelete(req.params.id, function (err) {
+        if (err) {
             console.log(err);
         } else {
-            res.render('edita.ejs', {Usuario: docs});
-        }
-    })
-})
-
-app.post('/edit/:id', function(req,res) {
-    Usuario.findByIdAndUpdate(req.params.id, 
-        { 
-            nome: req.body.txtNome, 
-            idade: req.body.txtIdade
-        }, function(err, docs) {
             res.redirect('/');
         }
 
-        );
-      
+    })
 })
 
-app.listen(3000, function() {
+app.get('/edit/:id', function (req, res) {
+    Usuario.findById(req.params.id, function (err, docs) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('edita.ejs', { Usuario: docs });
+        }
+    })
+})
+
+app.post('/edit/:id', function (req, res) {
+    Usuario.findByIdAndUpdate(req.params.id,
+        {
+            nome: req.body.txtNome,
+            idade: req.body.txtAlta,
+            baixa: req.body.txtBaixa
+        }, function (err, docs) {
+            res.redirect('/');
+        }
+
+    );
+
+})
+
+app.listen(3000, function () {
     console.log("Conexão inicializada.");
 })
 
