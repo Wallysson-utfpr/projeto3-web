@@ -1,10 +1,11 @@
 <%-include('adiciona.ejs')%>
 
-  <form method="POST">
+  <form method="POST" enctype="multipart/form-data">
     Id: <input type="text" name="txtId" readonly value="<%=Usuario._id%> ">
     Nome: <input type="text" name="txtNome" placeholder="Nome" value="<%=Usuario.nome%>" />
     Alta: <input type="text" name="txtAlta" placeholder="Alta" value="<%=Usuario.alta%>"> <br> <br>
-    Baixa: <input type="text" name="txtBaixa" placeholder="Baixa" value="<%=Usuario.baixa%>"> <br> <br>-->
+    Baixa: <input type="text" name="txtBaixa" placeholder="Baixa" value="<%=Usuario.baixa%>"> <br> <br>
+    Foto: <input type="file" name="txtFoto" value="<%=Usuario.foto%>"><br><br>
     <input type="submit" name="Editar" value="Editar" class="btn btn-secondary" />
   </form>
   <%-include('rodape.ejs')%>

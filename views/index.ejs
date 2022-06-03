@@ -10,6 +10,7 @@
       <th>Moeda</th>
       <th>Alta</th>
       <th>Baixa</th>
+      <th>Foto</th>
       <th>Editar</th>
       <th>Deletar</th>
     </tr>
@@ -25,6 +26,7 @@
         <td>
           <%=usuario.baixa%>
         </td>
+        <td><img class="foto" src="/fotos/<%=usuario.foto%>" /></td>
         <td>
           <a class="btn btn-primary" href="/edit/<%=usuario._id%>">Editar</a>
         </td>

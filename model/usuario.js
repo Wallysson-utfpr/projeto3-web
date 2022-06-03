@@ -4,6 +4,7 @@ var UsuarioSchema = conexao.Schema({
     nome: { type: String },
     alta: { type: String },
     baixa: { type: String },
+    foto: { type: String }
 
 })
 
