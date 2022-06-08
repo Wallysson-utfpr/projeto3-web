@@ -1,7 +1,8 @@
+// midleware para upload das imagens
+
 const multer = require('multer');
 
 var storage = multer.diskStorage({
-
     filename: function (req, file, callback) {
         let nomeArq = Date.now() + "-" + file.originalname;
         callback(null, nomeArq);
@@ -16,5 +17,4 @@ var storage = multer.diskStorage({
 })
 
 var upload = multer({ storage });
-
 module.exports = upload;
